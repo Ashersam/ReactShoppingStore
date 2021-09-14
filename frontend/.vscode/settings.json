@@ -1,42 +1,20 @@
 {
-	"workbench.colorCustomizations": {
-		"titleBar.activeForeground": "#000",
-		"titleBar.inactiveForeground": "#000000CC",
-		"titleBar.activeBackground": "#FFC600",
-		"titleBar.inactiveBackground": "#FFC600CC",
-		"[javascript]": {
-			"editor.formatOnSave": true
-		},
-		"editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
-		"editor.fontWeight": "500",
-		"editor.rulers": [80],
-		"editor.fontLigatures": true,
-		"prettier.tabWidth": 4,
-		"eslint.alwaysShowStatus": true,
-		"prettier.disableLanguages": ["js"],
-		"files.autoSave": "onFocusChange",
-		"prettier.useTabs": true,
-		"editor.formatOnSave": true,
-		"editor.multiCursorModifier": "ctrlCmd",
-		"editor.renderWhitespace": "none",
-		"editor.renderControlCharacters": true,
-		"prettier.arrowParens": "always",
-		"prettier.jsxBracketSameLine": true,
-		"prettier.jsxSingleQuote": true,
-		"prettier.singleQuote": true,
-		"prettier.trailingComma": "all",
-		"javascript.implicitProjectConfig.experimentalDecorators": true,
-		"workbench.colorTheme": "Cobalt2",
-		"javascript.updateImportsOnFileMove.enabled": "always",
-		"explorer.confirmDelete": false,
-		"window.zoomLevel": 0,
-		"eslint.codeAction.disableRuleComment": {},
-		"eslint.codeAction.showDocumentation": {},
-		"editor.codeActionsOnSave": {
-			"source.fixAll.eslint": true
-		},
-		"eslint.workingDirectories": []
-	},
-	"eslint.trace.server": null,
-	"eslint.format.enable": true
+  "workbench.colorCustomizations": {
+    "titleBar.activeForeground": "#000",
+    "titleBar.inactiveForeground": "#000000CC",
+    "titleBar.activeBackground": "#FFC600",
+    "titleBar.inactiveBackground": "#FFC600CC"
+  },
+  "editor.formatOnSave": true,
+  "[javascript]": {
+    "editor.formatOnSave": false
+  },
+  "[javascriptreact]": {
+    "editor.formatOnSave": false
+  },
+  "eslint.alwaysShowStatus": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
+  "prettier.disableLanguages": ["javascript", "javascriptreact"]
 }

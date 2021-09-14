@@ -1,20 +1,24 @@
 import casual from 'casual';
+import { PAGINATION_QUERY } from '../components/Pagination';
 
 // seed it so we get consistent results
 casual.seed(777);
 
 const fakeItem = () => ({
-  __typename: 'Item',
+  // __typename: 'Item',
   id: 'abc123',
   price: 5000,
   user: null,
-  image: 'dog-small.jpg',
-  title: 'dogs are best',
+  photo: {
+    image: {
+      publicUrlTransformed: 'dog.jpg',
+    },
+  },
+  name: 'dogs are best',
   description: 'dogs',
-  largeImage: 'dog.jpg',
 });
 
-const fakeUser = () => ({
+const fakeUser = (overrides) => ({
   __typename: 'User',
   id: '4234',
   name: casual.name,
@@ -22,13 +26,16 @@ const fakeUser = () => ({
   permissions: ['ADMIN'],
   orders: [],
   cart: [],
+  ...overrides,
 });
 
 const fakeOrderItem = () => ({
   __typename: 'OrderItem',
   id: casual.uuid,
-  image: `${casual.word}.jpg`,
-  title: casual.words(),
+  image: {
+    image: `${casual.word}.jpg`,
+  },
+  name: casual.words(),
   price: 4234,
   quantity: 1,
   description: casual.words(),
@@ -40,15 +47,15 @@ const fakeOrder = () => ({
   charge: 'ch_123',
   total: 40000,
   items: [fakeOrderItem(), fakeOrderItem()],
-  createdAt: '2018-04 - 06T19: 24: 16.000Z',
+  createdAt: '2022-12-11T20:16:13.797Z',
   user: fakeUser(),
 });
 
-const fakeCartItem = overrides => ({
+const fakeCartItem = (overrides) => ({
   __typename: 'CartItem',
   id: 'omg123',
   quantity: 3,
-  item: fakeItem(),
+  product: fakeItem(),
   user: fakeUser(),
   ...overrides,
 });
@@ -76,7 +83,30 @@ class LocalStorageMock {
   }
 }
 
+function makePaginationMocksFor(length) {
+  return [
+    {
+      request: { query: PAGINATION_QUERY },
+      result: {
+        data: {
+          _allProductsMeta: {
+            count: length,
+          },
+          itemsConnection: {
+            __typename: 'aggregate',
+            aggregate: {
+              count: length,
+              __typename: 'count',
+            },
+          },
+        },
+      },
+    },
+  ];
+}
+
 export {
+  makePaginationMocksFor,
   LocalStorageMock,
   fakeItem,
   fakeUser,
