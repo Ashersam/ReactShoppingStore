@@ -7,6 +7,8 @@ import {
 import { Product } from './schemas/Product';
 import { ProductImage } from './schemas/ProductImage';
 import { User } from './schemas/User';
+import { CartItem } from './schemas/CartItem';
+import { extendGraphqlSchema } from './mutations/index';
 import 'dotenv/config';
 import { insertSeedData } from './seed-data';
 import { sendPasswordResetEmial } from './lib/mail';
@@ -57,7 +59,9 @@ export default withAuth(
       User,
       Product,
       ProductImage,
+      CartItem,
     }),
+    extendGraphqlSchema,
     ui: {
       // to do change it for roles
       // show the ui only for people who pass this test

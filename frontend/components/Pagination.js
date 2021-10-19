@@ -14,6 +14,7 @@ export const PAGINATION_QUERY = gql`
     }
   }
 `;
+
 export default function Pagination({ page }) {
   const { data, error, loading } = useQuery(PAGINATION_QUERY);
   if (loading) return <p>loading ...</p>;
@@ -24,7 +25,9 @@ export default function Pagination({ page }) {
   return (
     <PaginationStyles>
       <Head>
-        <title>Autographa Store - Page {page} of ___ </title>
+        <title>
+          Autographa Store - Page {page} of {pageCount}
+        </title>
       </Head>
       <Link href={`/products/${page - 1}`}>
         <a aria-disabled={page <= 1}>⬅️ Prev</a>
